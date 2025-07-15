@@ -16,7 +16,7 @@ jobs:
       # 2. Node.js 환경을 설정합니다. (주석 해제)
       #    playwright를 실행하려면 Node.js가 필요합니다.
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '14' # 프로젝트에 맞는 Node.js 버전으로 지정하세요.
 
