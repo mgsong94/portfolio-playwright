@@ -8,6 +8,8 @@ test.describe('Contact', () => {
   test('Fill contact form and verify successs message(Answer)', async ({ page }) => {
     contactPage = new ContactPage(page)
 
+    await page.pause();
+    
     // open url
     await contactPage.navigate()
     
@@ -16,5 +18,7 @@ test.describe('Contact', () => {
 
     // verify success message
     await expect(await contactPage.successTxt).toHaveText('Thanks for contacting us! We will be in touch with you shortly')
+
+    await expect.soft(await contactPage.successTxt).toHaveText('fail test');
   })
 })
