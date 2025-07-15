@@ -29,3 +29,11 @@ jobs:
       # 5. Playwright 테스트 실행
       - name: Run Playwright tests
         run: npx playwright test tests/home.spec.ts
+
+      # 6. Test Result 파일 업로드
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with: 
+          name: Test Results
+          path: test-results
