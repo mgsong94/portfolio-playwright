@@ -37,7 +37,8 @@ test.describe('Home', () => {
     await homePage.getStartedBtn.click()
 
     // verify url has #get-started
-    await expect(page).toHaveURL(/.*#get-started/)
+    // await expect(page).toHaveURL(/.*#get-started/)
+    await expect(page).toHaveURL(/.*#123/)
   })
   
   test('Verify heading text is visible using text selector', async ({ page }) => {
