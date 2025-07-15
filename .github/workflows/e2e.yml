@@ -1,18 +1,33 @@
 name: e2e
+
 on: [push]
+
 jobs:
   test-e2e:
     name: Run E2E tests
-    runs-on : ubuntu-latest
+    # 'ubuntu-lastest'가 아닌 'ubuntu-latest'로 수정
+    runs-on: ubuntu-latest
+    
     steps:
+      # 1. 레포지토리의 소스 코드를 워크플로우 환경으로 가져옵니다.
       - name: Check out repository code
         uses: actions/checkout@v4
-      # - uses: actions/setup-node@v2
-      #   with:
-      #     node-version: '16'
-    #   - name: Install dependencies
-    #     run: npm ci
-    #   - name: Install Playwright
-    #     run: npx playwright install --with-deps
-    #   - name: Run your tests
-    #     run: npx playwright test tests/home.spec.ts
+
+      # 2. Node.js 환경을 설정합니다. (주석 해제)
+      #    playwright를 실행하려면 Node.js가 필요합니다.
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16' # 프로젝트에 맞는 Node.js 버전으로 지정하세요.
+
+      # 3. 'npm ci'를 사용해 package-lock.json 기준으로 의존성을 설치합니다. (주석 해제)
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Playwright에 필요한 브라우저(Chromium, Firefox 등)를 설치합니다. (주석 해제)
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # 5. 지정된 Playwright 테스트를 실행합니다. (주석 해제)
+      - name: Run Playwright tests
+        run: npx playwright test tests/home.spec.ts
