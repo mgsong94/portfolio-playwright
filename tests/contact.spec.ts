@@ -8,8 +8,6 @@ test.describe('Contact', () => {
   test('Fill contact form and verify successs message(Answer)', async ({ page }) => {
     contactPage = new ContactPage(page)
 
-    await page.pause();
-    
     // open url
     await contactPage.navigate()
     

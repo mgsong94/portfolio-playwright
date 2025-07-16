@@ -28,7 +28,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['allure-playwright', {outputFolder: 'test-results'}], ['list']],
+  reporter: [['allure-playwright', {outputFolder: 'test-results'}], ['line']],
 
   globalSetup: require.resolve('./utils/global-setup'),
 
@@ -39,7 +39,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     // trace view(debug 방법 중 하나)
-    trace: 'on',
+    trace: 'on-all-retries',
     
     storageState: 'loggedInState.json'
   },
