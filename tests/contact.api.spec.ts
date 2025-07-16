@@ -1,11 +1,10 @@
 import {test, expect, APIResponse} from "@playwright/test";
 import ContactPage from '../pages/contact.page'
 import apiController from "../controller/api.controller";
-// import { faker } from '@faker-js/faker';
 
 test.describe('Contact', () => {
   let contactPage: ContactPage;
-  let randomPerson;
+  let randomPerson: APIResponse;
 
   test.beforeAll(async () => {
     await apiController.init();
@@ -23,14 +22,10 @@ test.describe('Contact', () => {
     
     // fill out the input fields and submit
     await contactPage.submitForm(
-      randomPerson.name,
-      randomPerson.email,
-      randomPerson.phone,
-      randomPerson.website
-      // faker.person.fullName(),
-      // faker.internet.email(), 
-      // faker.phone.number(), 
-      // faker.lorem.paragraphs(2)
+      randomPerson['name'],
+      randomPerson['email'],
+      randomPerson['phone'],
+      randomPerson['website']
     );
 
     // verify success message

@@ -7,7 +7,7 @@ test.describe('My Account', () => {
     await expect(page).toHaveURL(/.*orders/)
   });
 
-  test('Access Downloadsd', async ({ page }) => {
+  test('Access Download', async ({ page }) => {
     await page.goto('/my-account')
     await page.locator(`li a[href*='downloads']`).click()
     await expect(page).toHaveURL(/.*downloads/)

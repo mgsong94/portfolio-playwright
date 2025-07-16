@@ -12,7 +12,7 @@ test.describe('Upload file', () => {
       cartPage = new CartPage(page)
   
       // open url
-      await page.goto('https://practice.sdetunicorns.com/cart/')
+      await page.goto('/cart/')
   
       // provide test file path
       const filePath = path.join(__dirname, `../data/${name}`)
@@ -21,7 +21,7 @@ test.describe('Upload file', () => {
      cartPage.uploadComponent().uploadFile(filePath)
   
       // hardcoded sleep = WRONG WAY(Hardcoded wait)
-      //  await page.waitForTimeout(5000)
+      // await page.waitForTimeout(5000)
   
       // wait for condition(Conditional wait)
       // await cartPage.uploadComponent().successTxt.waitFor({ state: 'visible', timeout: 10000})
