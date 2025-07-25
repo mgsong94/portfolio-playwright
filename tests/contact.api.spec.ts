@@ -14,7 +14,7 @@ test.describe('Contact', () => {
     console.log(newUserTodo);
   })
 
-  test('Fill contact form and verify successs message(Answer)', async ({ page }) => {
+  test('Fill contact form and verify successs message', async ({ page }) => {
     contactPage = new ContactPage(page)
 
     // open url

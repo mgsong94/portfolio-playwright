@@ -17,7 +17,7 @@ class ContactPage {
     this.emailInput = page.locator('.contact-email input')
     this.phoneInput = page.locator('.contact-phone input')
     this.messageInput = page.locator('.contact-message textarea')
-    this.submitBtn = page.locator('//button[@type="submit"]')
+    this.submitBtn = page.locator('button[type=submit]')
     this.successTxt = page.locator('div[role=alert]')
   }
 

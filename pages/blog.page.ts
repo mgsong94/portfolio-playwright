@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test' 
+import { Page, Locator } from '@playwright/test';
 
 class BlogPage {
   private page: Page;
@@ -6,11 +6,11 @@ class BlogPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.recentPostsList = page.locator('#recent-posts-3 ul li')
+    this.recentPostsList = page.locator('#recent-posts-3 ul li');
   }
-
+  
   async navigate() {
-    await this.page.goto('/blog')
+    await this.page.goto('/blog');
   }
 }
 
