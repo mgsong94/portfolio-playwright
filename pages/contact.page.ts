@@ -25,12 +25,14 @@ class ContactPage {
     await this.page.goto('/contact')
   }
 
-  async submitForm(name: string, email: string, phone: string, message: string) {
+  async fillForm(name: string, email: string, phone: string, message: string) {
     await this.nameInput.fill(name);
     await this.emailInput.fill(email);
     await this.phoneInput.fill(phone);
     await this.messageInput.fill(message);
-
+  }
+  
+  async submitForm() {
     await this.submitBtn.click();
   }
 }

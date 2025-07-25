@@ -11,13 +11,21 @@ test.describe('Contact', () => {
     // open contact page
     await contactPage.navigate();
     
-    // fill out the input fields and submit
-    await contactPage.submitForm(
+    // fill out the input fields
+    await contactPage.fillForm(
       faker.person.fullName(), 
       faker.internet.email(), 
       faker.phone.number(), 
       faker.lorem.paragraphs(2)
     )
+
+    // add a soft assertion
+    await expect.soft(contactPage.messageInput).toHaveText("Fail test message")
+
+    // click submit
+    await contactPage.submitForm();
+
+    // expect(test.info().errors.length).toBeLessThan(1);
 
     // verify success message
     await expect(contactPage.successTxt).toHaveText('Thanks for contacting us! We will be in touch with you shortly');
