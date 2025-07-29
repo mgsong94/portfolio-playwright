@@ -7,6 +7,7 @@ test.describe('Upload file', () => {
 
   const fileName = ['logotitle.png', '3mb-file.pdf']
 
+  // Regular Upload
   for (const name of fileName) {
     test(`should upload a ${name} file`, async ({ page }) => {
       cartPage = new CartPage(page)
@@ -18,7 +19,7 @@ test.describe('Upload file', () => {
       const filePath = path.join(__dirname, `../data/${name}`)
       
       // upload test file
-     cartPage.uploadComponent().uploadFile(filePath)
+      cartPage.uploadComponent().uploadFile(filePath)
   
       // hardcoded sleep = WRONG WAY(Hardcoded wait)
       // await page.waitForTimeout(5000)
@@ -31,6 +32,31 @@ test.describe('Upload file', () => {
       await expect(cartPage.uploadComponent().successTxt).toContainText('uploaded successfully', {timeout: 10000})
     })
   }
+
+  // Upload with DOM manipulation(input field가 숨겨져 접근할 수 없을 때 DOM을 수정하여 업로드)
+  test('should upload a test file on a hidden input field', async ({ page }) => {
+    cartPage = new CartPage(page);
+
+    // open url
+    await page.goto('/cart/');
+
+    // provide test file path
+    const filePath = path.join(__dirname, `../data/logotitle.png`);
+
+    // DOM manipulation
+    await page.evaluate(() => {
+      const selector = document.querySelector('input#upfile_1');
+      if (selector) {
+        selector.className = '';
+      }
+    });
+
+    // upload test file
+    cartPage.uploadComponent().uploadFile(filePath);
+
+    // assertion
+    await expect(cartPage.uploadComponent().successTxt).toContainText('uploaded successfully', { timeout: 10000 })
+  })
 })
 
 
