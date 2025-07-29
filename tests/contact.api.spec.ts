@@ -21,12 +21,15 @@ test.describe('Contact', () => {
     await contactPage.navigate()
     
     // fill out the input fields and submit
-    await contactPage.submitForm(
+    await contactPage.fillForm(
       randomPerson['name'],
       randomPerson['email'],
       randomPerson['phone'],
       randomPerson['website']
     );
+
+    // click submit
+    await contactPage.submitForm();
 
     // verify success message
     await expect(await contactPage.successTxt).toHaveText('Thanks for contacting us! We will be in touch with you shortly')
