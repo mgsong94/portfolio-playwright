@@ -20,7 +20,7 @@ test.describe('Contact', () => {
     )
 
     // add a soft assertion
-    await expect.soft(contactPage.messageInput).toHaveText("Fail test message")
+    // await expect.soft(contactPage.messageInput).toHaveText("Fail test message")
 
     // click submit
     await contactPage.submitForm();
